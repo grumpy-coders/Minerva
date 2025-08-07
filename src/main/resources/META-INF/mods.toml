@@ -1,0 +1,54 @@
+modLoader = "javafml"
+loaderVersion = "[54,)"
+license = "MIT"
+issueTrackerURL = "https://github.com/grumpycoders/minerva/issues"
+
+[[mods]]
+modId = "minerva"
+version = "1.0.0"
+displayName = "Minerva"
+description = """
+Minerva is a Minecraft AI assistant
+"""
+authors = "Wade Rooker"
+credits = "Developed by doomfaller"
+logoFile = "assets/minerva/logo.png"
+displayURL = "https://github.com/grumpycoders/minerva"
+parent = ""
+requiredMods = []
+dependencies = []
+
+[[dependencies.minerva]]
+modId = "forge"
+mandatory = true
+versionRange = "[1.28,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[mods]]
+modId = "examplemod"
+version = "1.0.0.0"
+displayName = "Example Mod"
+updateJSONURL = "https://minecraftforge.net/versions.json"
+displayURL = "https://minecraftforge.net"
+logoFile = "logo.png"
+credits = "I'd like to thank my mother and father."
+authors = "Author"
+description = """
+Lets you craft dirt into diamonds. This is a traditional mod that has existed for eons. It is ancient. The holy Notch created it. Jeb rainbowfied it. Dinnerbone made it upside down. Etc.
+"""
+displayTest = "MATCH_VERSION"
+
+[[dependencies.examplemod]]
+modId = "forge"
+mandatory = true
+versionRange = "[41,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.examplemod]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19,)"
+ordering = "NONE"
+side = "BOTH"
