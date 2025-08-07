@@ -11,7 +11,11 @@ import com.example.examplemod.ExampleMod;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
@@ -29,6 +33,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
@@ -37,6 +42,12 @@ public final class MinervaMod {
     public static final String MODID = "minerva";
     private static final Logger LOGGER = LogUtils.getLogger();
     
+    public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
+    // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
+    public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
+    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "examplemod" namespace
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
+    //public static final DeferredRegister<EntityType<Entity>> ENTITY = DeferredRegister.create(Registries.ENTITY_TYPE, MODID);
     
 
     public MinervaMod(FMLJavaModLoadingContext context) {

@@ -8,7 +8,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 
-public class ModEntities {
+public class EntityInit {
 
     public static final DeferredRegister<EntityType<?>> ENTITIES =
         DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, MinervaMod.MODID);
@@ -17,10 +17,10 @@ public class ModEntities {
             ResourceKey.create(ForgeRegistries.ENTITY_TYPES.getRegistryKey(), ResourceLocation.fromNamespaceAndPath(MinervaMod.MODID, "minerva")
 );
 
-    public static final RegistryObject<EntityType<EntityMinerva>> MINERVA =
+    public static final RegistryObject<EntityType<MinervaEntity>> MINERVA_ENTITY =
     	    ENTITIES.register("minerva", 
-    	        (java.util.function.Supplier<EntityType<EntityMinerva>>) () ->
-    	            EntityType.Builder.<EntityMinerva>of(EntityMinerva::new, MobCategory.CREATURE)
+    	        (java.util.function.Supplier<EntityType<MinervaEntity>>) () ->
+    	            EntityType.Builder.<MinervaEntity>of(MinervaEntity::new, MobCategory.CREATURE)
     	                .sized(0.6f, 1.8f)
     	                .build(MINERVA_KEY)
     	    );

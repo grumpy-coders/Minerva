@@ -1,0 +1,1 @@
+package com.mineai.minerva.client.model;
