@@ -2,13 +2,14 @@ package com.mineai.minerva.events;
 
 import com.mineai.minerva.EntityInit;
 import com.mineai.minerva.MinervaEntity;
+import com.mineai.minerva.MinervaMod;
 
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
+import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber()
+@Mod.EventBusSubscriber(modid = MinervaMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class CommonModEvents {
 
 	@SubscribeEvent
@@ -17,7 +18,7 @@ public class CommonModEvents {
 	}
 	
 	@SubscribeEvent
-	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		//event.registerLayerDefinition(EntityInit.MINERVA_ENTITY.get(), MinervaRenderer::new);
+	public static void registerSpawnEvents(SpawnPlacementRegisterEvent event) {
+		event.register(EntityInit.MINERVA_ENTITY.get(), MinervaEntity::canSpawn, SpawnPlacementRegisterEvent.Operation.OR);
 	}
 }

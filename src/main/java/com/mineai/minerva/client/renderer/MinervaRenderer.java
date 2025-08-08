@@ -1,26 +1,38 @@
-// MinervaRenderer.java
 package com.mineai.minerva.client.renderer;
 
-import com.mineai.minerva.EntityMinerva;
+import com.mineai.minerva.MinervaEntity;
 import com.mineai.minerva.MinervaMod;
 import com.mineai.minerva.client.model.MinervaModel;
 
+import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
 import net.minecraft.client.renderer.entity.HumanoidMobRenderer;
+import net.minecraft.client.renderer.entity.MobRenderer;
+import net.minecraft.client.renderer.entity.state.HumanoidRenderState;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.PathfinderMob;
 
-public class MinervaRenderer extends HumanoidMobRenderer<EntityMinerva, MinervaModel<EntityMinerva>> {
+public class MinervaRenderer extends MobRenderer<MinervaEntity, MinervaModel<MinervaEntity>> {
     
-    private static final ResourceLocation TEXTURE =
-        ResourceLocation.fromNamespaceAndPath(MinervaMod.MODID, "textures/entity/minerva_entity.png");
-
     public MinervaRenderer(EntityRendererProvider.Context context) {
         //super(context, new MinervaModel<>(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
-    	super(context, MinervaModel<>(context.bakeLayer(MinervaModel.MODEL_Y_OFFSET)), 1.0f);
+    		super(context, new MinervaModel(context.bakeLayer(MinervaModel.LAYER_LOCATION)));
     }
 
-    public ResourceLocation getTextureLocation(EntityMinerva entity) {
-        return TEXTURE;
+    private static final ResourceLocation TEXTURE_LOCATION =
+            ResourceLocation.fromNamespaceAndPath(MinervaMod.MODID, "textures/entity/minerva_entity.png");
+    
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TEXTURE_LOCATION, "main");
+
+    @Override
+    public ResourceLocation getTextureLocation(MinervaEntity entity) {
+        return TEXTURE_LOCATION;
     }
+
+	@Override
+	public MinervaEntity createRenderState() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

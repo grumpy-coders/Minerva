@@ -8,7 +8,7 @@ import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber()
+@Mod.EventBusSubscriber(modid = MinervaMod.MODID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ClientModEvents {
 
 	@SubscribeEvent
@@ -18,6 +18,6 @@ public class ClientModEvents {
 	
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		//event.registerLayerDefinition(EntityInit.MINERVA_ENTITY.get(), MinervaRenderer::new);
+		event.registerLayerDefinition(Minevr, MinervaRenderer::new);
 	}
 }

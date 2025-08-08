@@ -1,6 +1,7 @@
 package com.mineai.minerva;
 
 import net.minecraft.network.syncher.SynchedEntityData;
+import net.minecraft.util.RandomSource;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.syncher.EntityDataAccessor;
 import net.minecraft.network.syncher.EntityDataSerializers;
@@ -13,6 +14,8 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
+import net.minecraft.world.level.ServerLevelAccessor;
 
 
 public class MinervaEntity extends PathfinderMob {
@@ -37,7 +40,7 @@ public class MinervaEntity extends PathfinderMob {
     }
     
     public MinervaEntity(Level level, BlockPos blockPosition) {
-    	this(level, blockPosition.getX(), blockPosition.getY(), blockPosition.getZ());
+    		this(level, blockPosition.getX(), blockPosition.getY(), blockPosition.getZ());
     }
 
     // === Register AI Attributes like Health, Speed ===
@@ -46,6 +49,11 @@ public class MinervaEntity extends PathfinderMob {
             .add(Attributes.MAX_HEALTH, 20.0D)
             .add(Attributes.MOVEMENT_SPEED, 0.3D)
             .add(Attributes.ENTITY_INTERACTION_RANGE, 999.99D);
+    }
+    
+    public static boolean canSpawn(EntityType<?> type, ServerLevelAccessor level, EntitySpawnReason entitySpawnReason, BlockPos pos, RandomSource random) {
+    		//return level.getBlockState(pos.below()).getMaterial().isSolid() && !level.isNight();
+    		return true; //TODO: if we want to have conditions around spawning, for now it can always spawn
     }
 
     @Override
