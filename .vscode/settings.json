@@ -1,0 +1,18 @@
+{
+  "java.configuration.runtimes": [
+    {
+      "name": "JavaSE-24",
+      "path": "D:\\jdks\\jdk-24.0.2",
+      "default": true
+    }
+  ],
+  "java.import.generatesMetadataFilesAtProjectRoot": true,
+  "files.exclude": {
+    "**/.project": true,
+    "**/.classpath": true,
+    "**/.settings/": true,
+    "**/.factorypath": true
+  },
+  "editor.formatOnSave": true,
+  "java.compile.nullAnalysis.mode": "automatic"
+}

@@ -1,0 +1,17 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "gradle: build",
+      "type": "shell",
+      "command": "./gradlew build",
+      "group": "build"
+    },
+    {
+      "label": "gradle: test",
+      "type": "shell",
+      "command": "./gradlew test",
+      "group": "test"
+    }
+  ]
+}
