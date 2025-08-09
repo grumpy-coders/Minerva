@@ -6,8 +6,7 @@ import org.slf4j.Logger;
 //TODO: REPLICATE THIS ARCHITECTURE WITH MINERVA
 import com.example.examplemod.Config;
 import com.example.examplemod.ExampleMod;
-
-
+import com.mineai.minerva.entity.ModEntities;
 import com.mojang.logging.LogUtils;
 
 import net.minecraft.client.Minecraft;
@@ -23,19 +22,14 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
-import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
-import net.minecraftforge.fml.event.lifecycle.FMLConstructModEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
-import net.minecraftforge.registries.RegistryObject;
 
 @Mod(MinervaMod.MODID)
 public final class MinervaMod {
@@ -55,6 +49,7 @@ public final class MinervaMod {
 
         // Register the commonSetup method for modloading
         FMLCommonSetupEvent.getBus(modBusGroup).addListener(this::commonSetup);
+        ModEntities.register(modBusGroup);
 
 
         // Register the item to a creative tab

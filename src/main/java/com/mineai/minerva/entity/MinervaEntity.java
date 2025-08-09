@@ -1,4 +1,4 @@
-package com.mineai.minerva;
+package com.mineai.minerva.entity;
 
 import net.minecraft.network.syncher.SynchedEntityData;
 import net.minecraft.util.RandomSource;
@@ -14,7 +14,6 @@ import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.RandomStrollGoal;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.ServerLevelAccessor;
 
 
@@ -34,7 +33,7 @@ public class MinervaEntity extends PathfinderMob {
     }
     
     public MinervaEntity(Level level, double x, double y, double z) {
-        this(EntityInit.MINERVA_ENTITY.get(), level);
+        this(ModEntities.MINERVA_ENTITY.get(), level);
         setPos(x, y, z);
         
     }

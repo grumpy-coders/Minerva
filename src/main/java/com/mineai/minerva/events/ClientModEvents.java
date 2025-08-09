@@ -1,8 +1,9 @@
 package com.mineai.minerva.events;
 
-import com.mineai.minerva.EntityInit;
 import com.mineai.minerva.MinervaMod;
-import com.mineai.minerva.client.renderer.MinervaRenderer;
+import com.mineai.minerva.client.MinervaRenderer;
+import com.mineai.minerva.entity.MinervaEntity;
+import com.mineai.minerva.entity.ModEntities;
 
 import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
@@ -13,11 +14,11 @@ public class ClientModEvents {
 
 	@SubscribeEvent
 	public static void registerRenderers(EntityRenderersEvent.RegisterRenderers event) {
-		event.registerEntityRenderer(EntityInit.MINERVA_ENTITY.get(), MinervaRenderer::new);
+		event.registerEntityRenderer(ModEntities.MINERVA_ENTITY.get(), MinervaRenderer::new);
 	}
 	
 	@SubscribeEvent
 	public static void registerLayerDefinitions(EntityRenderersEvent.RegisterLayerDefinitions event) {
-		event.registerLayerDefinition(Minevr, MinervaRenderer::new);
+		event.registerLayerDefinition(Minerva, MinervaRenderer::new);
 	}
 }

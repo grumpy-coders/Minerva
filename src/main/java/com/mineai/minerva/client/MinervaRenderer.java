@@ -1,8 +1,7 @@
-package com.mineai.minerva.client.renderer;
+package com.mineai.minerva.client;
 
-import com.mineai.minerva.MinervaEntity;
 import com.mineai.minerva.MinervaMod;
-import com.mineai.minerva.client.model.MinervaModel;
+import com.mineai.minerva.entity.MinervaEntity;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
 import net.minecraft.client.model.geom.ModelLayers;
@@ -17,7 +16,7 @@ public class MinervaRenderer extends MobRenderer<MinervaEntity, MinervaModel<Min
     
     public MinervaRenderer(EntityRendererProvider.Context context) {
         //super(context, new MinervaModel<>(context.bakeLayer(ModelLayers.PLAYER)), 0.5f);
-    		super(context, new MinervaModel(context.bakeLayer(MinervaModel.LAYER_LOCATION)));
+    		super(context, new MinervaModel(context.bakeLayer(LAYER_LOCATION)));
     }
 
     private static final ResourceLocation TEXTURE_LOCATION =

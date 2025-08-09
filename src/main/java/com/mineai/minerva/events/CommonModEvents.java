@@ -1,8 +1,8 @@
 package com.mineai.minerva.events;
 
-import com.mineai.minerva.EntityInit;
-import com.mineai.minerva.MinervaEntity;
 import com.mineai.minerva.MinervaMod;
+import com.mineai.minerva.entity.ModEntities;
+import com.mineai.minerva.entity.MinervaEntity;
 
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.event.entity.SpawnPlacementRegisterEvent;
@@ -14,11 +14,11 @@ public class CommonModEvents {
 
 	@SubscribeEvent
 	public static void entityAttributes(EntityAttributeCreationEvent event) {
-		event.put(EntityInit.MINERVA_ENTITY.get(), MinervaEntity.createAttributes().build());
+		event.put(ModEntities.MINERVA_ENTITY.get(), MinervaEntity.createAttributes().build());
 	}
 	
 	@SubscribeEvent
 	public static void registerSpawnEvents(SpawnPlacementRegisterEvent event) {
-		event.register(EntityInit.MINERVA_ENTITY.get(), MinervaEntity::canSpawn, SpawnPlacementRegisterEvent.Operation.OR);
+		event.register(ModEntities.MINERVA_ENTITY.get(), MinervaEntity::canSpawn, SpawnPlacementRegisterEvent.Operation.OR);
 	}
 }
