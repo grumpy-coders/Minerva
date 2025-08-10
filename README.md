@@ -1,2 +1,2 @@
 # Minerva
-AI in Minecraft
+AI in Minecraft used to mine

@@ -1,0 +1,11 @@
+{
+  "java.import.generatesMetadataFilesAtProjectRoot": true,
+  "files.exclude": {
+    "**/.project": true,
+    "**/.classpath": true,
+    "**/.settings/": true,
+    "**/.factorypath": true
+  },
+  "editor.formatOnSave": true,
+  "java.compile.nullAnalysis.mode": "automatic"
+}

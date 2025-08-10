@@ -1,0 +1,10 @@
+{
+  "recommendations": [
+    "redhat.java",
+    "shengchen.vscode-checkstyle",
+    "sonarsource.sonarlint-vscode",
+    "vscjava.vscode-gradle",
+    "vscjava.vscode-java-pack",
+    "vscjava.vscode-maven"
+  ]
+}
