@@ -1,0 +1,21 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "runClient",
+			"type": "shell",
+			"command": "./gradlew runClient",
+			"windows": {
+				"command": "gradlew.bat runClient"
+			}
+		},
+		{
+			"label": "runServer",
+			"type": "shell",
+			"command": "./gradlew runServer",
+			"windows": {
+				"command": "gradlew.bat runServer"
+			}
+		}
+	]
+}
