@@ -3,10 +3,11 @@
 	"configurations": [
 		{
 			"type": "java",
-			"name": "attach to minecraft client",
+			"name": "Debug Minecraft Client",
 			"request": "attach",
 			"hostName": "localhost",
-			"port": 5005
+			"port": 5005,
+			"preLaunchTask": "runClient"
 		}
 	]
 }

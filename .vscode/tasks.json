@@ -6,7 +6,7 @@
 			"type": "shell",
 			"command": "./gradlew runClient",
 			"windows": {
-				"command": "gradlew.bat runClient"
+				"command": "./gradlew.bat runClient"
 			}
 		},
 		{
