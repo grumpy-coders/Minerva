@@ -7,5 +7,9 @@
 		"**/.factorypath": true
 	},
 	"editor.formatOnSave": true,
-	"java.compile.nullAnalysis.mode": "automatic"
+	"java.compile.nullAnalysis.mode": "automatic",
+	"cSpell.words": [
+		"mineai",
+		"MODID"
+	]
 }

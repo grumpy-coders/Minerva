@@ -1,28 +1,22 @@
 package com.mineai.minerva;
 
-import org.slf4j.Logger;
-
-
-//TODO: REPLICATE THIS ARCHITECTURE WITH MINERVA
-import com.example.examplemod.Config;
-import com.example.examplemod.ExampleMod;
+import com.mineai.minerva.client.commands.MinervaCommands;
 import com.mineai.minerva.entity.ModEntities;
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.logging.LogUtils;
-
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.components.ChatComponent;
+import net.minecraft.commands.CommandSourceStack;
 import net.minecraft.core.registries.Registries;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.item.BlockItem;
+import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.material.MapColor;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
+import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -34,58 +28,113 @@ import net.minecraftforge.registries.ForgeRegistries;
 @Mod(MinervaMod.MODID)
 public final class MinervaMod {
     public static final String MODID = "minerva";
-    private static final Logger LOGGER = LogUtils.getLogger();
-    
+    public static CommandDispatcher<CommandSourceStack> COMMAND_DISPATCHER;
+    public static ChatComponent chatWindow;
+
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
-    // Create a Deferred Register to hold Items which will all be registered under the "examplemod" namespace
     public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
-    // Create a Deferred Register to hold CreativeModeTabs which will all be registered under the "examplemod" namespace
-    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister.create(Registries.CREATIVE_MODE_TAB, MODID);
-    //public static final DeferredRegister<EntityType<Entity>> ENTITY = DeferredRegister.create(Registries.ENTITY_TYPE, MODID);
-    
+    public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister
+            .create(Registries.CREATIVE_MODE_TAB, MODID);
+
+    // Minerva Spawn Egg TODO: DOESNT WORK UNLESS WE DUPE SOME CODE FROM THE FORGE
+    // API FOR MOB SPAWN
+    // public static final RegistryObject<Item> MINERVA_SPAWN_EGG =
+    // ITEMS.register("minerva_spawn_egg",
+    // () -> new SpawnEggItem(ModEntities.MINERVA_ENTITY, new Item.Properties()));
 
     public MinervaMod(FMLJavaModLoadingContext context) {
         var modBusGroup = context.getModBusGroup();
 
-        // Register the commonSetup method for modloading
-        FMLCommonSetupEvent.getBus(modBusGroup).addListener(this::commonSetup);
-        ModEntities.register(modBusGroup);
+        // Register entity + items
+        ModEntities.ENTITY_TYPES.register(modBusGroup);
+        ITEMS.register(modBusGroup);
+        BLOCKS.register(modBusGroup);
+        CREATIVE_MODE_TABS.register(modBusGroup);
 
-
-        // Register the item to a creative tab
-        BuildCreativeModeTabContentsEvent.getBus(modBusGroup).addListener(MinervaMod::addCreative);
-
-        // Register our mod's ForgeConfigSpec so that Forge can create and load the config file for us
-        //context.registerConfig(ModConfig.Type.COMMON, Config.SPEC);
     }
-    
+
+    @SubscribeEvent
+    public static void onRegisterCommands(RegisterCommandsEvent event) {
+        COMMAND_DISPATCHER = event.getDispatcher();
+        MinervaCommands.register();
+    }
+
+    public static void sendChat(String message) {
+        // CHATGPT and YOUTUBE DINT HELP. FORGE API CHAT WAY IS BAD, SO IM DOING
+        // SOMETHING ELSE
+        chatWindow.addMessage(Component.literal(message));
+    }
+
+    // public static void sendChat_OLD(CommandSourceStack source, String message) {
+
+    // var outgoingChatMessage = new OutgoingChatMessage() {
+    // @Override
+    // public void sendToPlayer(ServerPlayer p_250979_, boolean p_249307_, Bound
+    // p_252281_) {
+    // // TODO Auto-generated method stub
+
+    // }
+
+    // @Override
+    // public Component content() {
+    // return new Component() {
+
+    // @Override
+    // public Style getStyle() {
+    // // TODO Auto-generated method stub
+    // throw new UnsupportedOperationException("Unimplemented method 'getStyle'");
+    // }
+
+    // @Override
+    // public ComponentContents getContents() {
+    // // TODO Auto-generated method stub
+    // throw new UnsupportedOperationException("Unimplemented method
+    // 'getContents'");
+    // }
+
+    // @Override
+    // public List<Component> getSiblings() {
+    // // TODO Auto-generated method stub
+    // throw new UnsupportedOperationException("Unimplemented method
+    // 'getSiblings'");
+    // }
+
+    // @Override
+    // public FormattedCharSequence getVisualOrderText() {
+    // // TODO Auto-generated method stub
+    // throw new UnsupportedOperationException("Unimplemented method
+    // 'getVisualOrderText'");
+    // }
+
+    // }
+    // }
+    // };
+
+    // source.sendChatMessage(new OutgoingChatMessage().sendToPlayer(() ->
+    // Component.literal(message)), false);
+
+    // }
+
+    @SubscribeEvent
     private void commonSetup(final FMLCommonSetupEvent event) {
-        // Some common setup code
-        LOGGER.info("HELLO FROM COMMON SETUP");
-
-        if (Config.logDirtBlock)
-            LOGGER.info("DIRT BLOCK >> {}", ForgeRegistries.BLOCKS.getKey(Blocks.DIRT));
-
-        LOGGER.info(Config.magicNumberIntroduction + Config.magicNumber);
-
-        Config.items.forEach((item) -> LOGGER.info("ITEM >> {}", item.toString()));
+        // LOGGER.info("MinervaMod Common Setup");
+        // LOGGER.info("DIRT BLOCK >> {}", event.description());
     }
 
-    // Add the example block item to the building blocks tab
+    @SubscribeEvent
     private static void addCreative(BuildCreativeModeTabContentsEvent event) {
-//        if (event.getTabKey() == CreativeModeTabs.BUILDING_BLOCKS)
-//            event.accept(EXAMPLE_BLOCK_ITEM);
+        if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
+            // event.accept(MINERVA_SPAWN_EGG);
+        }
     }
 
-    // You can use EventBusSubscriber to automatically register all static methods in the class annotated with @SubscribeEvent
     @Mod.EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
     public static class ClientModEvents {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
-            // Some client setup code
-            LOGGER.info("HELLO FROM CLIENT SETUP");
-            LOGGER.info("MINECRAFT NAME >> {}", Minecraft.getInstance().getUser().getName());
+            Minecraft minecraft = Minecraft.getInstance();
+
+            chatWindow = new ChatComponent(minecraft);
         }
     }
-    
 }
