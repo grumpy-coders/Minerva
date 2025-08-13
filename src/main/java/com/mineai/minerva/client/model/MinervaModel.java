@@ -2,9 +2,10 @@
 // Made with Blockbench 4.12.6
 // Exported for Minecraft 1.17+ with Mojang mappings
 
-package com.mineai.minerva.client;
+package com.mineai.minerva.client.model;
 
 import com.mineai.minerva.MinervaMod;
+import com.mineai.minerva.client.renderer.MinervaRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import net.minecraft.client.model.HumanoidModel;

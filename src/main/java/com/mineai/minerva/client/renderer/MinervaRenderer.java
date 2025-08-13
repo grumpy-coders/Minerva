@@ -1,6 +1,7 @@
-package com.mineai.minerva.client;
+package com.mineai.minerva.client.renderer;
 
 import com.mineai.minerva.MinervaMod;
+import com.mineai.minerva.client.model.MinervaModel;
 import com.mineai.minerva.entity.MinervaEntity;
 
 import net.minecraft.client.model.geom.ModelLayerLocation;
