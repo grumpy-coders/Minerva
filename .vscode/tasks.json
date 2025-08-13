@@ -32,12 +32,6 @@
       "options": {
         "cwd": "${workspaceFolder}"
       }
-    },
-    {
-      "label": "Gradle: runClient (debug)",
-      "type": "shell",
-      "command": "gradlew.bat runClient --debug-jvm",
-      "problemMatcher": []
     }
   ]
 }
