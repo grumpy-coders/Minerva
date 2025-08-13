@@ -29,15 +29,15 @@ import net.minecraftforge.registries.ForgeRegistries;
 public final class MinervaMod {
 	public static final String MODID = "minerva";
 	public static CommandDispatcher<CommandSourceStack> COMMAND_DISPATCHER;
-	public static ChatComponent ChatWindow;
-	public static final boolean IsLoggingEnabled = true;
+	public static ChatComponent chatWindow;
+	public static final boolean IS_LOGGING_ENABLED = true;
 
 	public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, MODID);
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister
 			.create(Registries.CREATIVE_MODE_TAB, MODID);
 
-	// Minerva Spawn Egg TODO: DOESNT WORK UNLESS WE DUPE SOME CODE FROM THE FORGE
+	// Minerva Spawn Egg TODO: doesn't WORK UNLESS WE DUPE SOME CODE FROM THE FORGE
 	// API FOR MOB SPAWN
 	// public static final RegistryObject<Item> MINERVA_SPAWN_EGG =
 	// ITEMS.register("minerva_spawn_egg",
@@ -51,7 +51,6 @@ public final class MinervaMod {
 		ITEMS.register(modBusGroup);
 		BLOCKS.register(modBusGroup);
 		CREATIVE_MODE_TABS.register(modBusGroup);
-
 	}
 
 	@SubscribeEvent
@@ -63,32 +62,36 @@ public final class MinervaMod {
 	public static void sendChat(String message) {
 		// CHATGPT and YOUTUBE DINT HELP. FORGE API CHAT WAY IS BAD, SO IM DOING
 		// SOMETHING ELSE
-		ChatWindow.addMessage(Component.literal(message));
+		chatWindow.addMessage(Component.literal(message));
 	}
 
 	@SubscribeEvent
 	private void commonSetup(final FMLCommonSetupEvent event) {
-		if (IsLoggingEnabled) {
+		if (IS_LOGGING_ENABLED) {
 			LogUtils.getLogger().info("MinervaMod Common Setup");
 		}
 	}
 
 	@SubscribeEvent
 	private static void addCreative(BuildCreativeModeTabContentsEvent event) {
-		if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS) {
-			// event.accept(MINERVA_SPAWN_EGG);
+		if (event.getTabKey() == CreativeModeTabs.SPAWN_EGGS && IS_LOGGING_ENABLED) {
+			LogUtils.getLogger().info("MinervaMod: SPAWN_EGGS tab detected, adding Minerva Spawn Egg");
 		}
 	}
 
 	@Mod.EventBusSubscriber(modid = MODID, value = Dist.CLIENT)
 	public static class ClientModEvents {
+		// Private constructor to prevent instantiation
+		private ClientModEvents() {
+		}
+
 		@SubscribeEvent
 		public static void onClientSetup(FMLClientSetupEvent event) {
 			Minecraft minecraft = Minecraft.getInstance();
 
-			ChatWindow = new ChatComponent(minecraft);
+			chatWindow = new ChatComponent(minecraft);
 
-			if (IsLoggingEnabled) {
+			if (IS_LOGGING_ENABLED) {
 				LogUtils.getLogger().info("MinervaMod Chat Window created");
 			}
 
