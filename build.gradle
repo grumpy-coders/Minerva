@@ -1,10 +1,6 @@
-plugins {
-    id 'eclipse'
-    id 'idea'
-    id 'maven-publish'
+plugins {    
     id 'net.minecraftforge.gradle' version '[6.0.36,6.2)'
 }
-
 
 // Don't need 2 toolchains, so we can comment this out.
 //java {
@@ -205,33 +201,10 @@ tasks.named('jar', Jar) {
     }
 }
 
-// Example configuration to allow publishing using the maven-publish plugin
-publishing {
-    publications {
-        register('mavenJava', MavenPublication) {
-            artifact jar
-        }
-    }
-    repositories {
-        maven {
-            url "file://${project.projectDir}/mcmodsrepo"
-        }
-    }
-}
-
 tasks.withType(JavaCompile).configureEach {
     options.encoding = 'UTF-8' // Use the UTF-8 charset for Java compilation
 }
 
-// IntelliJ no longer downloads javadocs and sources by default, this tells Gradle to force IntelliJ to do it.
-idea.module { downloadJavadoc = downloadSources = true }
-
-eclipse {
-    // Run everytime eclipse builds the code
-    //autoBuildTasks genEclipseRuns
-    // Run when importing the project
-    synchronizationTasks 'genEclipseRuns'
-}
 
 // Merge the resources and classes into the same directory, because Java expects modules to be in a single directory.
 // And if we have it in multiple we have to do performance intensive hacks like having the UnionFileSystem
