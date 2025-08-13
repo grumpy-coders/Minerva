@@ -1,0 +1,4 @@
+/minerva summon
+/minerva build
+/
+/config showfile
