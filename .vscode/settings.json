@@ -1,12 +1,14 @@
 {
+  "java.compile.nullAnalysis.mode": "automatic",
+  "java.configuration.updateBuildConfiguration": "automatic",
   "java.import.generatesMetadataFilesAtProjectRoot": true,
+  "java.import.gradle.java.home": "D:\\jdks\\jdk-21.0.2",
   "java.configuration.runtimes": [
     {
-      "name": "JavaSE-21",
-      "path": "D:\\jdks\\jdk-21.0.2"
+      "path": "D:\\jdks\\jdk-21.0.2",
+      "name": "JavaSE-21"
     }
   ],
-  "java.import.gradle.java.home": "D:\\jdks\\jdk-21.0.2",
   "gradle.java.home": "D:\\jdks\\jdk-21.0.2",
   "files.exclude": {
     "**/.project": true,
@@ -15,7 +17,6 @@
     "**/.factorypath": true
   },
   "editor.formatOnSave": true,
-  "java.compile.nullAnalysis.mode": "automatic",
   "cSpell.words": [
     "dists",
     "gradlew",
@@ -24,6 +25,5 @@
     "mineai",
     "MODID",
     "nall"
-  ],
-  "java.configuration.updateBuildConfiguration": "interactive"
+  ]
 }

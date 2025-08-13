@@ -69,8 +69,17 @@ try {
 	Remove-Item -Recurse -Force "$env:USERPROFILE\.gradle\caches\8.12.1" -ErrorAction SilentlyContinue
 	Remove-Item -Recurse -Force "$env:USERPROFILE\.gradle\wrapper\dists\gradle-8.12.1*" -ErrorAction SilentlyContinue
 	Remove-Item -Recurse -Force "$env:USERPROFILE\.gradle\jdks" -ErrorAction SilentlyContinue
+
+	# wipe stale forge caches that cause missing '...recomp.jar' markers
 	Remove-Item -Recurse -Force "$env:USERPROFILE\.gradle\caches\forge_gradle\minecraft_user_repo" -ErrorAction SilentlyContinue
 	Remove-Item -Recurse -Force "$env:USERPROFILE\.gradle\caches\modules-2\files-2.1\net.minecraftforge\forge\1.21.8-58.0.5*" -ErrorAction SilentlyContinue
+	
+	$forgeJar = Join-Path $env:USERPROFILE ".gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.21.8-58.0.5_mapped_official_1.21.8\forge-1.21.8-58.0.5_mapped_official_1.21.8-recomp.jar"
+	if (-not (Test-Path $forgeJar)) {
+		Write-Host "== forge jar missing; fetching via runClient ==" -ForegroundColor Yellow
+		./gradlew --no-daemon --refresh-dependencies runClient
+		Write-Host "== in VS Code: 'Java: Clean Java Language Server Workspace' then 'Developer: Reload Window' ==" -ForegroundColor Yellow
+	}
 
 	Write-Host "== verifying versions ==" -ForegroundColor Cyan
 	./gradlew --no-daemon --version

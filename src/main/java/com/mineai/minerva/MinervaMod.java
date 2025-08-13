@@ -65,56 +65,6 @@ public final class MinervaMod {
         chatWindow.addMessage(Component.literal(message));
     }
 
-    // public static void sendChat_OLD(CommandSourceStack source, String message) {
-
-    // var outgoingChatMessage = new OutgoingChatMessage() {
-    // @Override
-    // public void sendToPlayer(ServerPlayer p_250979_, boolean p_249307_, Bound
-    // p_252281_) {
-    // // TODO Auto-generated method stub
-
-    // }
-
-    // @Override
-    // public Component content() {
-    // return new Component() {
-
-    // @Override
-    // public Style getStyle() {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method 'getStyle'");
-    // }
-
-    // @Override
-    // public ComponentContents getContents() {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method
-    // 'getContents'");
-    // }
-
-    // @Override
-    // public List<Component> getSiblings() {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method
-    // 'getSiblings'");
-    // }
-
-    // @Override
-    // public FormattedCharSequence getVisualOrderText() {
-    // // TODO Auto-generated method stub
-    // throw new UnsupportedOperationException("Unimplemented method
-    // 'getVisualOrderText'");
-    // }
-
-    // }
-    // }
-    // };
-
-    // source.sendChatMessage(new OutgoingChatMessage().sendToPlayer(() ->
-    // Component.literal(message)), false);
-
-    // }
-
     @SubscribeEvent
     private void commonSetup(final FMLCommonSetupEvent event) {
         // LOGGER.info("MinervaMod Common Setup");
