@@ -28,14 +28,7 @@ public class MinervaRenderer extends HumanoidMobRenderer<MinervaEntity, Humanoid
             MinervaMod.MODID,
             "sourcesets/main/assets/textures/entity/minerva/minerva.png");
 
-    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TEXTURE_LOCATION, ""); // TODO:
-                                                                                                          // changed
-                                                                                                          // from main
-                                                                                                          // has shit
-                                                                                                          // should be
-                                                                                                          // derived
-                                                                                                          // from the
-                                                                                                          // root
+    public static final ModelLayerLocation LAYER_LOCATION = new ModelLayerLocation(TEXTURE_LOCATION, "");
 
     public MinervaRenderer(EntityRendererProvider.Context context) {
         super(context, new MinervaModel(context.bakeLayer(LAYER_LOCATION)), 0.5f);
@@ -46,11 +39,11 @@ public class MinervaRenderer extends HumanoidMobRenderer<MinervaEntity, Humanoid
         return TEXTURE_LOCATION;
     }
 
-
     @Override
     public HumanoidRenderState createRenderState() {
         // TODO Auto-generated method stub
-        //return this.extractRenderState(ModEntities.MINERVA_ENTITY.get()., new HumanoidRenderState(), 1.0f);
+        // return this.extractRenderState(ModEntities.MINERVA_ENTITY.get()., new
+        // HumanoidRenderState(), 1.0f);
         return new HumanoidRenderState();
     }
 }

@@ -18,28 +18,24 @@ import net.minecraft.resources.ResourceLocation;
 
 public class MinervaModel extends HumanoidModel<HumanoidRenderState> {
 
-	private final ModelPart head;
-	private final ModelPart body;
-	private final ModelPart rightArm;
-	private final ModelPart leftArm;
-	private final ModelPart rightLeg;
-	private final ModelPart leftLeg;
+	/*
+	 * private final ModelPart head;
+	 * private final ModelPart body;
+	 * private final ModelPart rightArm;
+	 * private final ModelPart leftArm;
+	 * private final ModelPart rightLeg;
+	 * private final ModelPart leftLeg;
+	 */
 
 	public MinervaModel(ModelPart root) {
 		super(root);
-		this.head = root.getChild("Head");
-		this.body = root.getChild("Body");
-		this.rightArm = root.getChild("Right Arm");
-		this.leftArm = root.getChild("Left Arm");
-		this.rightLeg = root.getChild("Right Leg");
-		this.leftLeg = root.getChild("Left Leg");
 	}
 
 	public static LayerDefinition createBodyLayer() {
 		MeshDefinition meshDefinition = new MeshDefinition();
 		PartDefinition partDefinition = meshDefinition.getRoot();
 
-		partDefinition.addOrReplaceChild("Head",
+		partDefinition.addOrReplaceChild("head",
 				CubeListBuilder.create().texOffs(0, 0)
 						.addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F,
 								new CubeDeformation(0.0F))
@@ -48,7 +44,16 @@ public class MinervaModel extends HumanoidModel<HumanoidRenderState> {
 								new CubeDeformation(0.5F)),
 				PartPose.ZERO);
 
-		partDefinition.addOrReplaceChild("Body",
+		partDefinition.addOrReplaceChild(
+				"hat",
+				CubeListBuilder.create()
+						.texOffs(32, 0)
+						.addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.0F))
+						.texOffs(32, 0)
+						.addBox(-4.0F, -8.0F, -4.0F, 8.0F, 8.0F, 8.0F, new CubeDeformation(0.5F)),
+				PartPose.ZERO);
+
+		partDefinition.addOrReplaceChild("body",
 				CubeListBuilder.create().texOffs(16, 16)
 						.addBox(-4.0F, 0.0F, -2.0F, 8.0F, 12.0F, 4.0F,
 								new CubeDeformation(0.0F))
@@ -57,7 +62,7 @@ public class MinervaModel extends HumanoidModel<HumanoidRenderState> {
 								new CubeDeformation(0.25F)),
 				PartPose.ZERO);
 
-		partDefinition.addOrReplaceChild("Right Arm",
+		partDefinition.addOrReplaceChild("right_arm",
 				CubeListBuilder.create().texOffs(40, 16)
 						.addBox(-3.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F,
 								new CubeDeformation(0.0F))
@@ -66,7 +71,7 @@ public class MinervaModel extends HumanoidModel<HumanoidRenderState> {
 								new CubeDeformation(0.25F)),
 				PartPose.offset(-5.0F, 2.0F, 0.0F));
 
-		partDefinition.addOrReplaceChild("Left Arm",
+		partDefinition.addOrReplaceChild("left_arm",
 				CubeListBuilder.create().texOffs(32, 48)
 						.addBox(-1.0F, -2.0F, -2.0F, 4.0F, 12.0F, 4.0F,
 								new CubeDeformation(0.0F))
@@ -75,7 +80,7 @@ public class MinervaModel extends HumanoidModel<HumanoidRenderState> {
 								new CubeDeformation(0.25F)),
 				PartPose.offset(5.0F, 2.0F, 0.0F));
 
-		partDefinition.addOrReplaceChild("Right Leg",
+		partDefinition.addOrReplaceChild("right_leg",
 				CubeListBuilder.create().texOffs(0, 16)
 						.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F,
 								new CubeDeformation(0.0F))
@@ -84,7 +89,7 @@ public class MinervaModel extends HumanoidModel<HumanoidRenderState> {
 								new CubeDeformation(0.25F)),
 				PartPose.offset(-1.9F, 12.0F, 0.0F));
 
-		partDefinition.addOrReplaceChild("Left Leg",
+		partDefinition.addOrReplaceChild("left_leg",
 				CubeListBuilder.create().texOffs(16, 48)
 						.addBox(-2.0F, 0.0F, -2.0F, 4.0F, 12.0F, 4.0F,
 								new CubeDeformation(0.0F))
