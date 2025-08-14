@@ -1,4 +1,5 @@
 {
+  "java.project.validation.onOpen": "disabled",
   "java.compile.nullAnalysis.mode": "automatic",
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.import.generatesMetadataFilesAtProjectRoot": true,
