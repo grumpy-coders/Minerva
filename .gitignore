@@ -28,13 +28,6 @@ replay_pid*
 build/
 !gradle/wrapper/gradle-wrapper.jar
 
-# Eclipse project files (cleanup)
-.classpath
-.project
-.settings/
-.factorypath
-bin/
-
 # Maven
 target/
 pom.xml.tag
@@ -80,14 +73,15 @@ out
 *.iml
 .idea
 
-# gradle
-build
-.gradle
-
 # other
 eclipse
 run
-.gz
+run-data
+crash-reports
+logs
+saves
+
 # Files from Forge MDK
 forge*changelog.txt
 .factorypath
+
