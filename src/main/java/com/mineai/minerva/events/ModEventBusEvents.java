@@ -30,9 +30,9 @@ public class ModEventBusEvents {
 		event.registerLayerDefinition(MinervaRenderer.LAYER_LOCATION, MinervaModel::createBodyLayer);
 	}
 
-	@SubscribeEvent
-	public static void registerSpawnEvents(SpawnPlacementRegisterEvent event) {
-		event.register(ModEntities.MINERVA_ENTITY.get(), MinervaEntity::canSpawn,
-				SpawnPlacementRegisterEvent.Operation.OR);
-	}
+	// @SubscribeEvent
+	// public static void registerSpawnEvents(SpawnPlacementRegisterEvent event) {
+	// 	event.register(ModEntities.MINERVA_ENTITY.get(), MinervaEntity::canSpawn,
+	// 			SpawnPlacementRegisterEvent.Operation.OR);
+	// }
 }
