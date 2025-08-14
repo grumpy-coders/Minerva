@@ -4,7 +4,7 @@
 
 package com.mineai.minerva.client.model;
 
-import com.mineai.minerva.MinervaMod;
+import com.mineai.minerva.client.MinervaMod;
 import com.mineai.minerva.client.renderer.MinervaRenderer;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;

@@ -1,8 +1,8 @@
 package com.mineai.minerva.client.commands;
 
 import com.mineai.minerva.entity.ModEntities;
+import com.mineai.minerva.client.MinervaMod;
 import com.mineai.minerva.entity.MinervaEntity;
-import com.mineai.minerva.MinervaMod;
 import com.mojang.brigadier.Command;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;

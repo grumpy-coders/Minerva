@@ -28,6 +28,13 @@ replay_pid*
 build/
 !gradle/wrapper/gradle-wrapper.jar
 
+# Eclipse project files (cleanup)
+.classpath
+.project
+.settings/
+.factorypath
+bin/
+
 # Maven
 target/
 pom.xml.tag

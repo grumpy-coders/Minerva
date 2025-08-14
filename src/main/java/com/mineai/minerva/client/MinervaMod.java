@@ -1,9 +1,11 @@
-package com.mineai.minerva;
+package com.mineai.minerva.client;
 
 import com.mineai.minerva.client.commands.MinervaCommands;
 import com.mineai.minerva.entity.ModEntities;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.logging.LogUtils;
+import com.nimbusds.openid.connect.sdk.federation.entities.EntityType;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.ChatComponent;
 import net.minecraft.commands.CommandSourceStack;
@@ -15,6 +17,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.RenderHighlightEvent.Entity;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
 import net.minecraftforge.event.RegisterCommandsEvent;
 import net.minecraftforge.eventbus.api.listener.SubscribeEvent;
@@ -36,7 +39,6 @@ public final class MinervaMod {
 	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, MODID);
 	public static final DeferredRegister<CreativeModeTab> CREATIVE_MODE_TABS = DeferredRegister
 			.create(Registries.CREATIVE_MODE_TAB, MODID);
-
 	// Minerva Spawn Egg TODO: doesn't WORK UNLESS WE DUPE SOME CODE FROM THE FORGE
 	// API FOR MOB SPAWN
 	// public static final RegistryObject<Item> MINERVA_SPAWN_EGG =
@@ -45,7 +47,7 @@ public final class MinervaMod {
 
 	public MinervaMod(FMLJavaModLoadingContext context) {
 		var modBusGroup = context.getModBusGroup();
-
+		LogUtils.getLogger().info("MinervaMod Setup");
 		// Register entity + items
 		ModEntities.ENTITY_TYPES.register(modBusGroup);
 		ITEMS.register(modBusGroup);

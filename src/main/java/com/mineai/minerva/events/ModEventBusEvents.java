@@ -1,6 +1,6 @@
 package com.mineai.minerva.events;
 
-import com.mineai.minerva.MinervaMod;
+import com.mineai.minerva.client.MinervaMod;
 import com.mineai.minerva.client.model.MinervaModel;
 import com.mineai.minerva.client.renderer.MinervaRenderer;
 import com.mineai.minerva.entity.MinervaEntity;
