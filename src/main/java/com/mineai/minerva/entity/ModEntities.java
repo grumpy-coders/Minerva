@@ -1,6 +1,6 @@
 package com.mineai.minerva.entity;
 
-import com.mineai.minerva.client.MinervaMod;
+import com.mineai.minerva.MinervaMod;
 
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.resources.ResourceLocation;

@@ -1,4 +1,4 @@
-package com.mineai.minerva.client;
+package com.mineai.minerva;
 
 import com.mineai.minerva.client.commands.MinervaCommands;
 import com.mineai.minerva.entity.ModEntities;
