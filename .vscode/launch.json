@@ -7,7 +7,6 @@
       "request": "launch",
       "mainClass": "net.minecraftforge.bootstrap.ForgeBootstrap",
       "projectName": "Minerva",
-      "cwd": "${workspaceFolder}/run",
       "vmArgs": "-Dforge.logging.console.level=debug -Deventbus.api.strictRuntimeChecks=true -Dforge.enabledGameTestNamespaces=minerva -Dforge.enableGameTest=true -Djava.net.preferIPv6Addresses=system -XX:HeapDumpPath=MojangTricksIntelDriversForPerformance_javaw.exe_minecraft.exe.heapdump",
       "args": "--launchTarget forge_userdev_client --version MOD_DEV --assetIndex 26 --assetsDir ${env:USERPROFILE}/.gradle/caches/forge_gradle/assets --gameDir .",
       "env": {

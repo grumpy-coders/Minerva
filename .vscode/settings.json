@@ -2,14 +2,13 @@
   "java.compile.nullAnalysis.mode": "automatic",
   "java.configuration.updateBuildConfiguration": "automatic",
   "java.import.generatesMetadataFilesAtProjectRoot": true,
-  "java.import.gradle.java.home": "D:\\jdks\\jdk-21.0.2",
+  "java.import.gradle.java.home": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.8.9-hotspot\\bin\\java.exe",
   "java.configuration.runtimes": [
     {
-      "path": "D:\\jdks\\jdk-21.0.2",
+      "path": "C:\\Program Files\\Eclipse Adoptium\\jdk-21.0.8.9-hotspot\\bin\\java.exe",
       "name": "JavaSE-21"
     }
   ],
-  "gradle.java.home": "D:\\jdks\\jdk-21.0.2",
   "files.exclude": {
     "**/.project": true,
     "**/.classpath": true,

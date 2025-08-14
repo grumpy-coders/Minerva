@@ -87,7 +87,7 @@ build
 # other
 eclipse
 run
-
+.gz
 # Files from Forge MDK
 forge*changelog.txt
 .factorypath
